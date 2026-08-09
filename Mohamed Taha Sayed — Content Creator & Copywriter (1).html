@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Taha Sayed — Content Creator & Copywriter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0D1B2A;
+  --navy2:   #112236;
+  --gold:    #C9973A;
+  --gold-lt: #E8B84B;
+  --teal:    #17A2B0;
+  --orange:  #E86A1A;
+  --cream:   #FAF8F5;
+  --warm:    #F0EDE8;
+  --text:    #2D2D2D;
+  --gray:    #8B8680;
+  --line:    #E0DDD8;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── CURSOR ── */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s;
+  mix-blend-mode: difference;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(13,27,42,0.85);
+  border-bottom: 1px solid rgba(201,151,58,0.15);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold-lt);
+  letter-spacing: 1px;
+}
+
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-tag::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--teal);
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1.0;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.hero-name .line1 { color: #fff; display: block; }
+.hero-name .line2 {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--gold);
+  display: block;
+}
+
+.hero-title {
+  font-size: 1rem;
+  color: var(--gold-lt);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 20px 0 12px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(23,162,176,0.1);
+  border: 1px solid rgba(23,162,176,0.3);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  color: var(--teal);
+  margin-bottom: 28px;
+}
+
+.hero-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  border-left: 3px solid var(--gold);
+  padding-left: 18px;
+  margin-bottom: 40px;
+}
+
+.hero-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-contacts a {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+.hero-contacts a:hover { color: var(--gold-lt); }
+.contact-icon {
+  width: 28px; height: 28px;
+  background: rgba(201,151,58,0.1);
+  border: 1px solid rgba(201,151,58,0.2);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+}
+
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Gold diagonal slash */
+.hero-right::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -60px; right: 0; bottom: 0;
+  background: linear-gradient(135deg, transparent 45%, rgba(201,151,58,0.04) 45%);
+  z-index: 1;
+}
+
+.hero-photo-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-photo-frame {
+  width: 340px; height: 420px;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+.hero-photo-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(20%) contrast(1.05);
+}
+.hero-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(13,27,42,0.7));
+}
+
+/* Corner accents */
+.corner {
+  position: absolute;
+  width: 30px; height: 30px;
+}
+.corner-tl { top: -8px; left: -8px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.corner-br { bottom: -8px; right: -8px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+/* Floating stat cards */
+.float-card {
+  position: absolute;
+  background: rgba(13,27,42,0.92);
+  border: 1px solid rgba(201,151,58,0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 14px 18px;
+  z-index: 3;
+  animation: float 4s ease-in-out infinite;
+}
+.float-card:nth-child(2) { animation-delay: -2s; }
+
+.float-card .num {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold-lt);
+  display: block;
+}
+.float-card .lbl {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+  display: block;
+}
+
+.fc-1 { top: 20%; left: -20px; }
+.fc-2 { bottom: 22%; right: -20px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--gold);
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  display: block;
+}
+.stat-lbl {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(13,27,42,0.65);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.stat-divider {
+  width: 1px; height: 40px;
+  background: rgba(13,27,42,0.2);
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 90px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-tag::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 48px;
+}
+
+/* ── SKILLS ── */
+.skills-section { background: var(--navy2); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(201,151,58,0.1);
+  border: 1px solid rgba(201,151,58,0.1);
+}
+
+.skill-card {
+  background: var(--navy2);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+  cursor: default;
+}
+.skill-card:hover { background: rgba(201,151,58,0.05); }
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+.skill-card:hover::before { transform: scaleX(1); }
+
+.skill-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+.skill-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.skill-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ── COPY SAMPLES ── */
+.copy-section { background: var(--navy); }
+
+.copy-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.copy-tab {
+  padding: 12px 28px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  margin-bottom: -1px;
+}
+.copy-tab.active { color: var(--gold-lt); border-bottom-color: var(--gold); }
+.copy-tab:hover { color: rgba(255,255,255,0.7); }
+
+.copy-panel { display: none; }
+.copy-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.copy-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.copy-card:hover {
+  border-color: rgba(201,151,58,0.3);
+  transform: translateY(-4px);
+}
+
+.copy-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.copy-stat-badge {
+  background: rgba(201,151,58,0.1);
+  border: 1px solid rgba(201,151,58,0.2);
+  border-radius: 50px;
+  padding: 3px 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--gold-lt);
+}
+.copy-stat-badge.teal {
+  background: rgba(23,162,176,0.1);
+  border-color: rgba(23,162,176,0.2);
+  color: var(--teal);
+}
+
+.copy-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.copy-quote-mark {
+  position: absolute;
+  top: 16px; right: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: rgba(201,151,58,0.08);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Light50 card variant */
+.copy-card.light50 {
+  background: rgba(232,106,26,0.04);
+  border-color: rgba(232,106,26,0.12);
+}
+.copy-card.light50:hover { border-color: rgba(232,106,26,0.35); }
+.copy-card.light50 .copy-stat-badge {
+  background: rgba(232,106,26,0.1);
+  border-color: rgba(232,106,26,0.2);
+  color: var(--orange);
+}
+
+/* ── PROJECTS ── */
+.projects-section { background: var(--navy2); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.projects-grid .project-card:first-child {
+  grid-column: 1 / -1;
+}
+
+.project-card {
+  border-radius: 16px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-card.safia {
+  background: linear-gradient(135deg, rgba(201,151,58,0.08) 0%, rgba(13,27,42,0.95) 60%);
+  border-color: rgba(201,151,58,0.15);
+}
+.project-card.safia:hover { border-color: rgba(201,151,58,0.35); }
+
+.project-card.light50 {
+  background: linear-gradient(135deg, rgba(232,106,26,0.08) 0%, rgba(13,27,42,0.95) 60%);
+  border-color: rgba(232,106,26,0.15);
+}
+.project-card.light50:hover { border-color: rgba(232,106,26,0.35); }
+
+.project-card.glowframe {
+  background: linear-gradient(135deg, rgba(23,162,176,0.08) 0%, rgba(13,27,42,0.95) 60%);
+  border-color: rgba(23,162,176,0.15);
+}
+.project-card.glowframe:hover { border-color: rgba(23,162,176,0.35); }
+
+.project-card.realestate {
+  background: linear-gradient(135deg, rgba(232,180,75,0.08) 0%, rgba(13,27,42,0.95) 60%);
+  border-color: rgba(232,180,75,0.15);
+}
+.project-card.realestate:hover { border-color: rgba(232,180,75,0.35); }
+
+.project-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  opacity: 0.3;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.project-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.project-type {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.project-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+.project-metrics {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.p-metric-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: block;
+}
+.p-metric-lbl {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+  display: block;
+}
+
+.project-card.safia .p-metric-val { color: var(--gold-lt); }
+.project-card.light50 .p-metric-val { color: var(--orange); }
+.project-card.glowframe .p-metric-val { color: var(--teal); }
+.project-card.realestate .p-metric-val { color: var(--gold-lt); }
+
+.wip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(23,162,176,0.1);
+  border: 1px solid rgba(23,162,176,0.25);
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+.wip-dot {
+  width: 6px; height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Bg accent number */
+.project-bg-num {
+  position: absolute;
+  right: 30px; top: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  font-weight: 900;
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── STRENGTHS ── */
+.strengths-section { background: var(--navy); }
+
+.strengths-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.strength-panel {
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.strength-panel.skills-panel {
+  background: rgba(201,151,58,0.04);
+  border-color: rgba(201,151,58,0.12);
+}
+
+.strength-panel.sales-panel {
+  background: rgba(23,162,176,0.04);
+  border-color: rgba(23,162,176,0.12);
+}
+
+.panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.strength-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.strength-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+
+.str-bullet {
+  width: 20px; height: 20px;
+  background: rgba(201,151,58,0.15);
+  border: 1px solid rgba(201,151,58,0.3);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sales-panel .str-bullet {
+  background: rgba(23,162,176,0.15);
+  border-color: rgba(23,162,176,0.3);
+  color: var(--teal);
+}
+
+.sales-intro {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* ── EDUCATION ── */
+.edu-section { background: var(--navy2); }
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.edu-card {
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.edu-card:hover { transform: translateY(-4px); }
+
+.edu-card.dm    { background: rgba(201,151,58,0.05); border-color: rgba(201,151,58,0.15); }
+.edu-card.uni   { background: rgba(23,162,176,0.05); border-color: rgba(23,162,176,0.15); }
+.edu-card.ws    { background: rgba(232,106,26,0.05); border-color: rgba(232,106,26,0.15); }
+
+.edu-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; }
+.edu-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.edu-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+}
+.edu-card.dm .edu-date    { color: var(--gold); }
+.edu-card.uni .edu-date   { color: var(--teal); }
+.edu-card.ws .edu-date    { color: var(--orange); }
+
+.edu-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ── QUOTE ── */
+.quote-section {
+  background: var(--gold);
+  padding: 70px 60px;
+  text-align: center;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--navy);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+.quote-attr {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(13,27,42,0.5);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #080F16;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(201,151,58,0.15);
+}
+
+.footer-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold-lt);
+}
+
+.footer-contacts {
+  display: flex;
+  gap: 28px;
+}
+.footer-contacts a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-contacts a:hover { color: var(--gold-lt); }
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 100px 24px 40px; }
+  .hero-right { display: none; }
+  section { padding: 60px 24px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .copy-panel.active { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid .project-card:first-child { grid-column: 1; }
+  .strengths-layout { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .stats-bar { padding: 24px; gap: 16px; flex-wrap: wrap; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+  .footer-contacts { flex-direction: column; align-items: center; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mohamed Taha</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#copy">Copy Samples</a>
+    <a href="#projects">Projects</a>
+    <a href="#edu">Education</a>
+    <a href="mailto:Mohamedtahaa283@gmail.com">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <div class="hero-tag">Content Creator & Copywriter</div>
+    <h1 class="hero-name">
+      <span class="line1">Mohamed</span>
+      <span class="line2">Taha Sayed</span>
+    </h1>
+    <div class="hero-title">Content Creator  ✦  Copywriter  ✦  Moderation Team Leader</div>
+    <div class="hero-badge">⚡ Strong Sales Foundation Across Multiple Industries</div>
+    <p class="hero-tagline">"I write content that connects,<br>and copy that sells."</p>
+    <div class="hero-contacts">
+      <a href="mailto:Mohamedtahaa283@gmail.com">
+        <span class="contact-icon">✉</span>
+        Mohamedtahaa283@gmail.com
+      </a>
+      <a href="tel:01024025483">
+        <span class="contact-icon">☎</span>
+        01024025483
+      </a>
+      <a href="https://linkedin.com/in/mohamed-taha-b9a052409" target="_blank">
+        <span class="contact-icon">in</span>
+        linkedin.com/in/mohamed-taha-b9a052409
+      </a>
+    </div>
+    <a href="https://wa.me/201024025483" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:32px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;padding:14px 28px;border-radius:50px;text-decoration:none;width:fit-content;">
+      💬 Chat on WhatsApp
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <div class="float-card fc-1">
+        <span class="num">+2,634%</span>
+        <span class="lbl">Organic Growth</span>
+      </div>
+      <div class="hero-photo-frame">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-br"></div>
+        <img src="https://i.imgur.com/placeholder.jpg"
+             onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#1a2a3a,#0d1b2a)'; this.parentElement.innerHTML += '<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:5rem;color:rgba(201,151,58,0.2)\'>MT</div>'"
+             alt="Mohamed Taha">
+      </div>
+      <div class="float-card fc-2">
+        <span class="num">5+</span>
+        <span class="lbl">Brands Worked On</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">+2,634%</span>
+    <span class="stat-lbl">Organic Growth</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">6,917</span>
+    <span class="stat-lbl">Views · 35 Days</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">41</span>
+    <span class="stat-lbl">Organic Shares</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">5+</span>
+    <span class="stat-lbl">Brands</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">B2B</span>
+    <span class="stat-lbl">Sales Background</span>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-tag reveal">What I Do</div>
+  <h2 class="section-title reveal reveal-delay-1">Core Specializations</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal reveal-delay-1">
+      <span class="skill-icon">✍️</span>
+      <div class="skill-name">Sales Copywriting</div>
+      <p class="skill-desc">Every word serves a commercial goal. I write copy that moves customers from interest to action — ads, captions, and campaigns that actually sell.</p>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <span class="skill-icon">📱</span>
+      <div class="skill-name">Content Creation</div>
+      <p class="skill-desc">Content built on real audience understanding. Original ideas designed for specific platforms — not recycled templates or trend-chasing.</p>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <span class="skill-icon">💬</span>
+      <div class="skill-name">Community Moderation</div>
+      <p class="skill-desc">Led a moderation team while driving smart, strategic engagement that builds trust and loyalty — turning followers into buyers through authentic, well-timed responses.</p>
+    </div>
+    <div class="skill-card reveal reveal-delay-4">
+      <span class="skill-icon">🎯</span>
+      <div class="skill-name">Content Strategy</div>
+      <p class="skill-desc">Data-driven content plans aligned with real business KPIs — not just a posting schedule, but a roadmap to measurable results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COPY SAMPLES -->
+<section class="copy-section" id="copy">
+  <div class="section-tag reveal">Real Work</div>
+  <h2 class="section-title reveal reveal-delay-1">Copy Samples</h2>
+
+  <div class="copy-tabs reveal reveal-delay-2">
+    <div class="copy-tab active" onclick="switchTab('safia', this)">Lamsat Safia</div>
+    <div class="copy-tab" onclick="switchTab('light50', this)">Light 50</div>
+  </div>
+
+  <!-- Safia Panel -->
+  <div class="copy-panel active" id="panel-safia">
+    <div class="copy-card reveal reveal-delay-1">
+      <div class="copy-stats">
+        <span class="copy-stat-badge">48 Likes</span>
+        <span class="copy-stat-badge teal">87% FYP Traffic</span>
+      </div>
+      <div class="copy-quote-mark">"</div>
+      <p class="copy-text">إسدال القلوب متوفر دلوقتي 💕
+اختيار مثالي لصلاة التراويح، ورمضان والعيد
+واسع ومريح ومصمم بطريقة لا تُظهر أي تفاصيل
+لو بتدوري على راحة + احتشام + وشكل أنيق في نفس الوقت، ده اختيارك ✨💗
+الحقي اسألي علي العروض 💗</p>
+    </div>
+    <div class="copy-card reveal reveal-delay-2">
+      <div class="copy-stats">
+        <span class="copy-stat-badge">34 Likes</span>
+        <span class="copy-stat-badge">8 Shares</span>
+      </div>
+      <div class="copy-quote-mark">"</div>
+      <p class="copy-text">العبايه دي بتتباع قبل ما نلحق نصورها .. كل ما بتنزل بتخلص 👌💗
+خامة مريحة تلبسيها اليوم كله، وتتفصل بأي لون انتي عايزاه
+مش محتاجة تفكير كتير... دي من القطع اللي بتنجح لوحدها 😉
+وسعرها؟ أحلى مفاجأة 👀💸
+ابعتيلنا "عيد" على الخاص بسرعة قبل ما تخلص 💗</p>
+    </div>
+    <div class="copy-card reveal reveal-delay-3">
+      <div class="copy-stats">
+        <span class="copy-stat-badge">26 Likes</span>
+        <span class="copy-stat-badge">5 Saves</span>
+      </div>
+      <div class="copy-quote-mark">"</div>
+      <p class="copy-text">عباية من غير لمسة صَفية مينفعش 😍✨
+العيد قرب 🤍 ولسه محتارة؟
+لمسة صفية جهزتلك موديلات مميزة ✨
+متوفرة بالألوان: الأسود — البني — البيج
+اكتبي في الكومنت "عيد" 📥 وهنبعتلك كل الموديلات</p>
+    </div>
+  </div>
+
+  <!-- Light 50 Panel -->
+  <div class="copy-panel" id="panel-light50">
+    <div class="copy-card light50 reveal reveal-delay-1">
+      <div class="copy-stats">
+        <span class="copy-stat-badge">Brand Story</span>
+      </div>
+      <div class="copy-quote-mark">"</div>
+      <p class="copy-text">احنا مين؟
+لايت 50 بتوفر الفلور لامب بالإضاءات المميزة — إضاءة الـ RGB
+هدفنا إننا نوفر المود المناسب لكل الفئات
+أنت مش تايه.. أنت بس مودك مش متظبط
+ولايت 50 وفرتلك مودك 💡</p>
+    </div>
+    <div class="copy-card light50 reveal reveal-delay-2">
+      <div class="copy-stats">
+        <span class="copy-stat-badge">Product Copy</span>
+      </div>
+      <div class="copy-quote-mark">"</div>
+      <p class="copy-text">الإضاءة أساس أي قعدة
+الإضاء المناسبة هتساعدك تفكر وتركز في كل حاجة
+مودك لو مش متظبط — يومك هيبقى متلغبط
+لايت 50 — منتج شغال بصوتك 🎵</p>
+    </div>
+    <div class="copy-card light50 reveal reveal-delay-3">
+      <div class="copy-stats">
+        <span class="copy-stat-badge">Brand Tagline</span>
+      </div>
+      <div class="copy-quote-mark">"</div>
+      <p class="copy-text">كل قطعة كان ليها هدف
+والهدف هو إن النور مش مجرد نور
+انما النور هو المود اللي أنت محتاجه
+وقت تفكيرك... ووقت نومك... وحتي قعدتك مع صحابك
+"اختيارك لنورك هو أساس مودك" ✨</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-tag reveal">Experience</div>
+  <h2 class="section-title reveal reveal-delay-1">Projects & Work</h2>
+  <div class="projects-grid">
+
+    <div class="project-card safia reveal reveal-delay-1">
+      <span class="project-number">01 / CASE STUDY</span>
+      <div class="project-bg-num">01</div>
+      <h3 class="project-name">Lamsat Safia</h3>
+      <div class="project-type" style="color:var(--gold)">Islamic Fashion · TikTok</div>
+      <p class="project-desc">Managed full content strategy and copywriting for an Islamic fashion brand on TikTok. Wrote sales-driven captions creating real urgency. Leveraged FYP algorithm to drive viral organic reach — 87% of all traffic came directly from the For You Page, zero paid budget.</p>
+      <div class="project-metrics">
+        <div>
+          <span class="p-metric-val">+2,634%</span>
+          <span class="p-metric-lbl">Views Growth</span>
+        </div>
+        <div>
+          <span class="p-metric-val">6,917</span>
+          <span class="p-metric-lbl">Post Views</span>
+        </div>
+        <div>
+          <span class="p-metric-val">41</span>
+          <span class="p-metric-lbl">Organic Shares</span>
+        </div>
+        <div>
+          <span class="p-metric-val">35</span>
+          <span class="p-metric-lbl">Days Only</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card light50 reveal reveal-delay-2">
+      <span class="project-number">02 / MODERATION TEAM LEAD</span>
+      <div class="project-bg-num">02</div>
+      <h3 class="project-name">Light 50</h3>
+      <div class="project-type" style="color:var(--orange)">RGB Smart Lighting · 2 Months, Ongoing</div>
+      <p class="project-desc">Started as a Moderator, promoted to Team Leader of a 2-person moderation team. Manage content posting (~20 posts/month) driving strong audience engagement, contribute to content strategy alongside the team, provide sales solutions to support brand goals, and support the team to maintain performance and quality. Built the original brand story & copy concept: "You're not lost — your mood is just not set right."</p>
+      <div class="project-metrics">
+        <div>
+          <span class="p-metric-val">Team Lead</span>
+          <span class="p-metric-lbl">Promoted from Moderator</span>
+        </div>
+        <div>
+          <span class="p-metric-val">~20</span>
+          <span class="p-metric-lbl">Posts / Month</span>
+        </div>
+        <div>
+          <span class="p-metric-val">2</span>
+          <span class="p-metric-lbl">Team Members Led</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card realestate reveal reveal-delay-3">
+      <span class="project-number">03 / SALES TRACK RECORD</span>
+      <div class="project-bg-num">03</div>
+      <h3 class="project-name">Real Estate — New Cairo</h3>
+      <div class="project-type" style="color:var(--gold-lt)">5th Settlement · Rentals & Sales</div>
+      <p class="project-desc">Property consultant specializing in the New Cairo 5th Settlement rental market, with real field sales experience closing both rental and sales deals at strong price points.</p>
+      <div class="project-metrics">
+        <div>
+          <span class="p-metric-val">4</span>
+          <span class="p-metric-lbl">Sales Closed / 3 Months</span>
+        </div>
+        <div>
+          <span class="p-metric-val">20+</span>
+          <span class="p-metric-lbl">Rental Deals</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card glowframe reveal reveal-delay-4">
+      <span class="project-number">04 / IN EXECUTION</span>
+      <div class="project-bg-num">04</div>
+      <div class="wip-badge"><span class="wip-dot"></span> Currently Building</div>
+      <h3 class="project-name">Glowframe</h3>
+      <div class="project-type" style="color:var(--teal)">RGB Smart Frames · Music-Responsive</div>
+      <p class="project-desc">Leading full brand strategy for Glowframe — RGB frames that respond to music. Building storytelling content, social proof strategy, and pre-launch community for gamers & home decor enthusiasts.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="strengths-section">
+  <div class="section-tag reveal">Why Me</div>
+  <h2 class="section-title reveal reveal-delay-1">My Strengths</h2>
+  <div class="strengths-layout">
+    <div class="strength-panel skills-panel reveal reveal-delay-2">
+      <div class="panel-title">
+        <span>✍️</span> Core Skills
+      </div>
+      <ul class="strength-list">
+        <li><span class="str-bullet">✓</span> Copy written with a seller's mindset — not just pretty words</li>
+        <li><span class="str-bullet">✓</span> Deep understanding of what drives audiences to buy</li>
+        <li><span class="str-bullet">✓</span> Building trust and loyalty through authentic content</li>
+        <li><span class="str-bullet">✓</span> Converting followers to buyers via smart moderation</li>
+        <li><span class="str-bullet">✓</span> Leading a moderation team — content, sales solutions & team support</li>
+        <li><span class="str-bullet">✓</span> Content planning aligned with real business KPIs</li>
+      </ul>
+    </div>
+    <div class="strength-panel sales-panel reveal reveal-delay-3">
+      <div class="panel-title">
+        <span>⚡</span> Sales DNA
+      </div>
+      <p class="sales-intro">Real field sales experience across multiple industries — I understand the buying decision from the inside, and that shows in every word I write.</p>
+      <ul class="strength-list">
+        <li><span class="str-bullet">→</span> Real Estate Freelance — 1.5 Years</li>
+        <li><span class="str-bullet">→</span> High-Ticket Deal Closing (Solo)</li>
+        <li><span class="str-bullet">→</span> Daily B2B Negotiation Under Pressure</li>
+        <li><span class="str-bullet">→</span> Field Sales Across Multiple Sectors</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="edu">
+  <div class="section-tag reveal">Background</div>
+  <h2 class="section-title reveal reveal-delay-1">Education & Development</h2>
+  <div class="edu-grid">
+    <div class="edu-card dm reveal reveal-delay-1">
+      <span class="edu-icon">📈</span>
+      <div class="edu-title">Digital Marketing — Talaat Amin</div>
+      <div class="edu-date">Jan 14 → Apr 21, 2026</div>
+      <p class="edu-desc">Intensive 3-month program covering Content Creation, Sales Copywriting, Content Planning, and Performance Ads.</p>
+    </div>
+    <div class="edu-card uni reveal reveal-delay-2">
+      <span class="edu-icon">🎓</span>
+      <div class="edu-title">B.Sc. Foreign Trade — Helwan University</div>
+      <div class="edu-date">Graduated 2025</div>
+      <p class="edu-desc">Faculty of Commerce & Business Administration — Foreign Trade Department.</p>
+    </div>
+    <div class="edu-card ws reveal reveal-delay-3">
+      <span class="edu-icon">⚡</span>
+      <div class="edu-title">Workshop — Live Client Accounts</div>
+      <div class="edu-date">Apr 28, 2026</div>
+      <p class="edu-desc">Mid Hand Cake · Zamalek Branch. Solved real team & system challenges using Storytelling campaigns + targeted offers strategy. Solo execution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <p class="quote-text">"Content is not just words — it's a sales tool. And I write it with a seller's mindset."</p>
+  <div class="quote-attr">— Mohamed Taha Sayed</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Mohamed Taha Sayed</div>
+  <div class="footer-contacts">
+    <a href="mailto:Mohamedtahaa283@gmail.com">Mohamedtahaa283@gmail.com</a>
+    <a href="tel:01024025483">01024025483</a>
+    <a href="https://linkedin.com/in/mohamed-taha-b9a052409" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX - 5 + 'px';
+  cursor.style.top  = e.clientY - 5 + 'px';
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Copy tabs
+function switchTab(id, el) {
+  document.querySelectorAll('.copy-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.copy-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
+
+// Nav active on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--gold-lt)' : '';
+  });
+});
+
+// Stagger skill cards on load
+document.querySelectorAll('.skill-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.1) + 's';
+});
+</script>
+</body>
+</html>
